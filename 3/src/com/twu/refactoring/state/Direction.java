@@ -1,40 +1,37 @@
 package com.twu.refactoring.state;
 
 public class Direction {
-    private final char direction;
+    private DirectionState directionState;
 
     public Direction(char direction) {
-        this.direction = direction;
+        setDirectionState(direction);
+    }
+
+    private void setDirectionState(char direction) {
+        switch (direction) {
+            case 'N':
+                this.directionState = new North();
+                break;
+            case 'S':
+                this.directionState = new South();
+                break;
+            case 'E':
+                this.directionState = new East();
+                break;
+            case 'W':
+                this.directionState = new West();
+                break;
+            default:
+                throw new IllegalArgumentException();
+        }
     }
 
     public Direction turnRight() {
-        switch (direction) {
-            case 'N':
-                return new Direction('E');
-            case 'S':
-                return new Direction('W');
-            case 'E':
-                return new Direction('N');
-            case 'W':
-                return new Direction('S');
-            default:
-                throw new IllegalArgumentException();
-        }
+        return directionState.turnRight();
     }
 
     public Direction turnLeft() {
-        switch (direction) {
-            case 'N':
-                return new Direction('W');
-            case 'S':
-                return new Direction('E');
-            case 'E':
-                return new Direction('N');
-            case 'W':
-                return new Direction('S');
-            default:
-                throw new IllegalArgumentException();
-        }
+        return directionState.turnLeft();
     }
 
     @Override
@@ -44,18 +41,18 @@ public class Direction {
 
         Direction direction1 = (Direction) o;
 
-        if (direction != direction1.direction) return false;
+        if (directionState.direction != direction1.directionState.direction) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return (int) direction;
+        return (int) directionState.direction;
     }
 
     @Override
     public String toString() {
-        return "Direction{direction=" + direction + '}';
+        return "Direction{direction=" + directionState.direction + '}';
     }
 }

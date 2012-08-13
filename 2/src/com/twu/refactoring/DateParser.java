@@ -13,6 +13,12 @@ public class DateParser {
 
     private final String dateAndTimeString;
 
+    private final FieldDefinition YEAR = new FieldDefinition("Year", 0, 4, 2000, 2012);
+    private final FieldDefinition MONTH = new FieldDefinition("Month", 5, 7, 1, 12);
+    private final FieldDefinition DATE = new FieldDefinition("Date", 8, 10, 1, 31);
+    private final FieldDefinition HOUR = new FieldDefinition("Hour", 11, 13, 0, 23);
+    private final FieldDefinition MINUTE = new FieldDefinition("Minute", 14, 16, 0, 59);
+
     /**
      * Takes a date in ISO 8601 format and returns a date
      *
@@ -29,16 +35,16 @@ public class DateParser {
     public Date parse() {
         int hour, minute;
 
-        int year = parseYear();
-        int month = parseMonth();
-        int date = parseDate();
+        int year = parseField(YEAR);
+        int month = parseField(MONTH);
+        int date = parseField(DATE);
 
         if (isNoTimeProvided()) {
             hour = 0;
             minute = 0;
         } else {
-            hour = parseHour();
-            minute = parseMinute();
+            hour = parseField(HOUR);
+            minute = parseField(MINUTE);
         }
 
         return createDate(hour, minute, year, month, date);
@@ -56,78 +62,23 @@ public class DateParser {
         return dateAndTimeString.substring(11, 12).equals("Z");
     }
 
-
-    private int parseMinute() {
-        int startPosition = 14;
-        int endPosition = 16;
-        int minValue = 0;
-        int maxValue = 59;
-        HashMap<String, Integer> minuteDetails = generateDetailsMap(startPosition, endPosition, minValue, maxValue);
-        return parseValueString("Minute", minuteDetails);
-    }
-
-    private int parseHour() {
-        int startPosition = 11;
-        int endPosition = 13;
-        int minValue = 0;
-        int maxValue = 23;
-        HashMap<String, Integer> hourDetails = generateDetailsMap(startPosition, endPosition, minValue, maxValue);
-        return parseValueString("Hour", hourDetails);
-    }
-
-    private int parseDate() {
-        int startPosition = 8;
-        int endPosition = 10;
-        int minValue = 1;
-        int maxValue = 31;
-        HashMap<String, Integer> dateDetails = generateDetailsMap(startPosition, endPosition, minValue, maxValue);
-        return parseValueString("Date", dateDetails);
-    }
-
-    private int parseMonth() {
-        int startPosition = 5;
-        int endPosition = 7;
-        int minValue = 1;
-        int maxValue = 12;
-        HashMap<String, Integer> monthDetails = generateDetailsMap(startPosition, endPosition, minValue, maxValue);
-        return parseValueString("Month", monthDetails);
-    }
-
-    private int parseYear() {
-        int startPosition = 0;
-        int endPosition = 4;
-        int minValue = 2000;
-        int maxValue = 2012;
-        HashMap<String, Integer> yearDetails = generateDetailsMap(startPosition, endPosition, minValue, maxValue);
-        return parseValueString("Year", yearDetails);
-    }
-
-    private HashMap<String, Integer> generateDetailsMap(int startPosition, int endPosition, int minValue, int maxValue) {
-        HashMap<String,Integer> details = new HashMap<String, Integer>();
-        details.put("startPosition", startPosition);
-        details.put("endPosition", endPosition);
-        details.put("minValue", minValue);
-        details.put("maxValue", maxValue);
-        return details;
-    }
-
-    private int parseValueString(String valueName, HashMap<String, Integer> details){
+    private int parseField(FieldDefinition field){
         int value;
-        int stringLength = details.get("endPosition") - details.get("startPosition");
+        int stringLength = field.endIndex - field.startIndex;
         try {
-            String stringToParse = dateAndTimeString.substring(details.get("startPosition"), details.get("endPosition"));
+            String stringToParse = getStringToParse(field);
             value = Integer.parseInt(stringToParse);
         } catch (StringIndexOutOfBoundsException e) {
-            throw new IllegalArgumentException(String.format(OUT_OF_BOUND_MESSAGE_TEMPLATE, valueName, stringLength));
+            throw new IllegalArgumentException(String.format(OUT_OF_BOUND_MESSAGE_TEMPLATE, field.name, stringLength));
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(String.format(INVALID_INTEGER_MESSAGE_TEMPLATE, valueName));
+            throw new IllegalArgumentException(String.format(INVALID_INTEGER_MESSAGE_TEMPLATE, field.name));
         }
-        checkBounds(valueName, details, value);
+        if (value < field.lowerBound || value > field.upperBound)
+            throw new IllegalArgumentException(String.format(OUT_RANGE_MESSAGE_TEMPLATE,field.name, field.lowerBound, field.upperBound));
         return value;
     }
 
-    private void checkBounds(String valueName, HashMap<String, Integer> details, int value) {
-        if (value < details.get("minValue") || value > details.get("maxValue"))
-            throw new IllegalArgumentException(String.format(OUT_RANGE_MESSAGE_TEMPLATE,valueName, details.get("minValue"),details.get("maxValue")));
+    private String getStringToParse(FieldDefinition field){
+        return dateAndTimeString.substring(field.startIndex, field.endIndex);
     }
 }
