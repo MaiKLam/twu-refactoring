@@ -58,40 +58,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LineItem.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/1/src/com/twu/refactoring/LineItem.java">
+      <file leaf-file-name="DateParser.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/2/src/com/twu/refactoring/DateParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="4" selection-start="207" selection-end="207" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Order.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/1/src/com/twu/refactoring/Order.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="55" selection-start="850" selection-end="850" vertical-scroll-proportion="1.1111112">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OrderReceipt.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/1/src/com/twu/refactoring/OrderReceipt.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="69" selection-start="819" selection-end="819" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OrderReceiptTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/1/test/com/twu/refactoring/OrderReceiptTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="77" selection-start="842" selection-end="842" vertical-scroll-proportion="0.0">
+            <state line="133" column="60" selection-start="5084" selection-end="5084" vertical-scroll-proportion="0.96633">
               <folding>
-                <element signature="e#728#738#0" expanded="true" />
+                <element signature="docComment;method#DateParser#0;class#DateParser#0" expanded="false" />
+                <element signature="e#3720#3737#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DateParserTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2/test/com/twu/refactoring/DateParserTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="173" column="40" selection-start="6169" selection-end="6169" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -110,6 +93,7 @@
         <option value="$PROJECT_DIR$/1/test/com/twu/refactoring/OrderTest.java" />
         <option value="$PROJECT_DIR$/1/src/com/twu/refactoring/OrderReceipt.java" />
         <option value="$PROJECT_DIR$/1/src/com/twu/refactoring/LineItem.java" />
+        <option value="$PROJECT_DIR$/2/src/com/twu/refactoring/DateParser.java" />
       </list>
     </option>
   </component>
@@ -183,34 +167,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="refactoring" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="twu-refactoring" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="twu-refactoring" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -225,7 +181,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="1" />
+              <option name="myItemId" value="2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -234,6 +190,16 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="refactoring" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="twu-refactoring" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="1" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -251,13 +217,35 @@
     <property name="dynamic.classpath" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
   </component>
-  <component name="RunManager" selected="JUnit.OrderReceiptTest">
+  <component name="RunManager" selected="JUnit.DateParserTest">
     <configuration default="false" name="OrderReceiptTest" type="JUnit" factoryName="JUnit" temporary="true">
       <module name="1" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.twu.refactoring" />
       <option name="MAIN_CLASS_NAME" value="com.twu.refactoring.OrderReceiptTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="DateParserTest" type="JUnit" factoryName="JUnit" temporary="true">
+      <module name="2" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.twu.refactoring" />
+      <option name="MAIN_CLASS_NAME" value="com.twu.refactoring.DateParserTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -391,8 +379,9 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
-    <list size="1">
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="JUnit.OrderReceiptTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.DateParserTest" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -419,6 +408,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850242" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -429,11 +419,10 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.6714976" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.6714976" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850242" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
     </layout>
@@ -497,40 +486,50 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/1/test/com/twu/refactoring/OrderReceiptTest.java">
+    <entry file="file://$PROJECT_DIR$/1/src/com/twu/refactoring/Order.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="77" selection-start="842" selection-end="842" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#728#738#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2/src/com/twu/refactoring/DateParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="13" selection-start="147" selection-end="147" vertical-scroll-proportion="-1.2820513">
+        <state line="33" column="55" selection-start="850" selection-end="850" vertical-scroll-proportion="1.1111112">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/1/src/com/twu/refactoring/LineItem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="4" selection-start="207" selection-end="207" vertical-scroll-proportion="0.0">
+        <state line="8" column="4" selection-start="207" selection-end="207" vertical-scroll-proportion="0.26936027">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/1/src/com/twu/refactoring/OrderReceipt.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="69" selection-start="819" selection-end="819" vertical-scroll-proportion="0.0">
+        <state line="26" column="69" selection-start="819" selection-end="819" vertical-scroll-proportion="0.87542087">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/1/src/com/twu/refactoring/Order.java">
+    <entry file="file://$PROJECT_DIR$/1/test/com/twu/refactoring/OrderReceiptTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="55" selection-start="850" selection-end="850" vertical-scroll-proportion="1.1111112">
+        <state line="25" column="77" selection-start="842" selection-end="842" vertical-scroll-proportion="0.2929293">
+          <folding>
+            <element signature="e#728#738#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2/test/com/twu/refactoring/DateParserTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="173" column="40" selection-start="6169" selection-end="6169" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2/src/com/twu/refactoring/DateParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="133" column="60" selection-start="5084" selection-end="5084" vertical-scroll-proportion="0.96633">
+          <folding>
+            <element signature="docComment;method#DateParser#0;class#DateParser#0" expanded="false" />
+            <element signature="e#3720#3737#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

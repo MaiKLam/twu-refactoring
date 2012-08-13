@@ -6,12 +6,12 @@ import java.util.HashMap;
 import java.util.TimeZone;
 
 public class DateParser {
-    private final String dateAndTimeString;
-    private static final HashMap<String, TimeZone> KNOWN_TIME_ZONES = new HashMap<String, TimeZone>();
 
-    static {
-        KNOWN_TIME_ZONES.put("UTC", TimeZone.getTimeZone("UTC"));
-    }
+    private static final String OUT_OF_BOUND_MESSAGE_TEMPLATE = "%s string is less than %d characters";
+    private static final String INVALID_INTEGER_MESSAGE_TEMPLATE = "%s is not an integer";
+    private static final String OUT_RANGE_MESSAGE_TEMPLATE = "%s cannot be less than %d or more than %d";
+
+    private final String dateAndTimeString;
 
     /**
      * Takes a date in ISO 8601 format and returns a date
@@ -27,73 +27,107 @@ public class DateParser {
     }
 
     public Date parse() {
-        int year, month, date, hour, minute;
+        int hour, minute;
 
-        try {
-            String yearString = dateAndTimeString.substring(0, 4);
-            year = Integer.parseInt(yearString);
-        } catch (StringIndexOutOfBoundsException e) {
-            throw new IllegalArgumentException("Year string is less than 4 characters");
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Year is not an integer");
-        }
-        if (year < 2000 || year > 2012)
-            throw new IllegalArgumentException("Year cannot be less than 2000 or more than 2012");
+        int year = parseYear();
+        int month = parseMonth();
+        int date = parseDate();
 
-        try {
-            String monthString = dateAndTimeString.substring(5, 7);
-            month = Integer.parseInt(monthString);
-        } catch (StringIndexOutOfBoundsException e) {
-            throw new IllegalArgumentException("Month string is less than 2 characters");
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Month is not an integer");
-        }
-        if (month < 1 || month > 12)
-            throw new IllegalArgumentException("Month cannot be less than 1 or more than 12");
-
-        try {
-            String dateString = dateAndTimeString.substring(8, 10);
-            date = Integer.parseInt(dateString);
-        } catch (StringIndexOutOfBoundsException e) {
-            throw new IllegalArgumentException("Date string is less than 2 characters");
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Date is not an integer");
-        }
-        if (date < 1 || date > 31)
-            throw new IllegalArgumentException("Date cannot be less than 1 or more than 31");
-
-        if (dateAndTimeString.substring(11, 12).equals("Z")) {
+        if (isNoTimeProvided()) {
             hour = 0;
             minute = 0;
         } else {
-            try {
-                String hourString = dateAndTimeString.substring(11, 13);
-                hour = Integer.parseInt(hourString);
-            } catch (StringIndexOutOfBoundsException e) {
-                throw new IllegalArgumentException("Hour string is less than 2 characters");
-            } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("Hour is not an integer");
-            }
-            if (hour < 0 || hour > 23)
-                throw new IllegalArgumentException("Hour cannot be less than 0 or more than 23");
-
-            try {
-                String minuteString = dateAndTimeString.substring(14, 16);
-                minute = Integer.parseInt(minuteString);
-            } catch (StringIndexOutOfBoundsException e) {
-                throw new IllegalArgumentException("Minute string is less than 2 characters");
-            } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("Minute is not an integer");
-            }
-            if (minute < 0 || minute > 59)
-                throw new IllegalArgumentException("Minute cannot be less than 0 or more than 59");
-
+            hour = parseHour();
+            minute = parseMinute();
         }
 
+        return createDate(hour, minute, year, month, date);
+    }
+
+    private Date createDate(int hour, int minute, int year, int month, int date) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeZone(TimeZone.getTimeZone("UTC"));
         calendar.set(year, month - 1, date, hour, minute, 0);
         calendar.set(Calendar.MILLISECOND, 0);
         return calendar.getTime();
+    }
+
+    private boolean isNoTimeProvided() {
+        return dateAndTimeString.substring(11, 12).equals("Z");
+    }
+
+
+    private int parseMinute() {
+        int startPosition = 14;
+        int endPosition = 16;
+        int minValue = 0;
+        int maxValue = 59;
+        HashMap<String, Integer> minuteDetails = generateDetailsMap(startPosition, endPosition, minValue, maxValue);
+        return parseValueString("Minute", minuteDetails);
+    }
+
+    private int parseHour() {
+        int startPosition = 11;
+        int endPosition = 13;
+        int minValue = 0;
+        int maxValue = 23;
+        HashMap<String, Integer> hourDetails = generateDetailsMap(startPosition, endPosition, minValue, maxValue);
+        return parseValueString("Hour", hourDetails);
+    }
+
+    private int parseDate() {
+        int startPosition = 8;
+        int endPosition = 10;
+        int minValue = 1;
+        int maxValue = 31;
+        HashMap<String, Integer> dateDetails = generateDetailsMap(startPosition, endPosition, minValue, maxValue);
+        return parseValueString("Date", dateDetails);
+    }
+
+    private int parseMonth() {
+        int startPosition = 5;
+        int endPosition = 7;
+        int minValue = 1;
+        int maxValue = 12;
+        HashMap<String, Integer> monthDetails = generateDetailsMap(startPosition, endPosition, minValue, maxValue);
+        return parseValueString("Month", monthDetails);
+    }
+
+    private int parseYear() {
+        int startPosition = 0;
+        int endPosition = 4;
+        int minValue = 2000;
+        int maxValue = 2012;
+        HashMap<String, Integer> yearDetails = generateDetailsMap(startPosition, endPosition, minValue, maxValue);
+        return parseValueString("Year", yearDetails);
+    }
+
+    private HashMap<String, Integer> generateDetailsMap(int startPosition, int endPosition, int minValue, int maxValue) {
+        HashMap<String,Integer> details = new HashMap<String, Integer>();
+        details.put("startPosition", startPosition);
+        details.put("endPosition", endPosition);
+        details.put("minValue", minValue);
+        details.put("maxValue", maxValue);
+        return details;
+    }
+
+    private int parseValueString(String valueName, HashMap<String, Integer> details){
+        int value;
+        int stringLength = details.get("endPosition") - details.get("startPosition");
+        try {
+            String stringToParse = dateAndTimeString.substring(details.get("startPosition"), details.get("endPosition"));
+            value = Integer.parseInt(stringToParse);
+        } catch (StringIndexOutOfBoundsException e) {
+            throw new IllegalArgumentException(String.format(OUT_OF_BOUND_MESSAGE_TEMPLATE, valueName, stringLength));
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(String.format(INVALID_INTEGER_MESSAGE_TEMPLATE, valueName));
+        }
+        checkBounds(valueName, details, value);
+        return value;
+    }
+
+    private void checkBounds(String valueName, HashMap<String, Integer> details, int value) {
+        if (value < details.get("minValue") || value > details.get("maxValue"))
+            throw new IllegalArgumentException(String.format(OUT_RANGE_MESSAGE_TEMPLATE,valueName, details.get("minValue"),details.get("maxValue")));
     }
 }
