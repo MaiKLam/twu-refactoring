@@ -6,7 +6,6 @@ public class LineItem {
 	private int quantity;
 
     private static final String PRINT_TEMPLATE = "%s\t%.1f\t%d\t%.1f\n";
-
     private static final double SALES_TAX_RATE = 0.10;
 
     public LineItem(String description, double price, int quantity) {
